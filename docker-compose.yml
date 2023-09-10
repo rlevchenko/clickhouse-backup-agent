@@ -1,0 +1,94 @@
+#-----------------------------------------------------------
+# Docker Compose Main File | Clickhouse Backup Agent | rlevchenko.com
+# PROVIDED WITHOUT WARRANTY OF ANY KIND
+#-----------------------------------------------------------
+
+version: '3.8'
+services:
+  # Clickhouse Server
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.8-alpine
+    container_name: clickhouse
+    hostname: clickhouse
+    restart: always
+    ports:
+      - "8123:8123"
+      - "49167:9000"
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    environment:
+      - CLICKHOUSE_USER=rlbackup # instead of the "default" user
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1 # sql management is more flexible
+      - CLICKHOUSE_PASSWORD=Pass123 # rlbackup's password
+    volumes:
+      - ./clickhouse/clickhouse-data:/var/lib/clickhouse # ch data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "2"
+        compress: "true"
+
+  # Clickhouse Backup
+  clickhouse-backup:
+    image: altinity/clickhouse-backup:2.4.0
+    container_name: clickhouse-backup-api
+    hostname: clickhouse-backup-api
+    environment:
+      - CLICKHOUSE_BACKUP_CONFIG=/backup/config/clickhouse-backup-config.yml
+    volumes_from:
+      - clickhouse # let's get data from clickhouse server
+    volumes:
+      - ./clickhouse/clickhouse-backup-config.yml:/backup/config/clickhouse-backup-config.yml # ch backup config
+    entrypoint: ['clickhouse-backup','server']
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "2"
+        compress: "true"
+
+  # Clickhouse Backup Agent
+  clickhouse-backup-agent:
+    image: ch-backup-agent
+    build:
+      context: ./agent
+      labels:
+        - "com.example.author==rlevchenko.com"
+    container_name: ch-rl-backup-agent
+    restart: always
+    volumes:
+      - "./clickhouse/backups:/backup/storage"
+    depends_on:
+      - clickhouse
+      - clickhouse-backup
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "2"
+        compress: "true"
+
+  # A sample FTP server
+  ftpd_server:
+    image: stilliard/pure-ftpd
+    container_name: ftp
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    volumes:
+      - "/ftpdata:/home/username/"
+      - "/ftppasswd:/etc/pure-ftpd/passwd"
+    environment:
+      PUBLICHOST: "ftp"
+      FTP_USER_NAME: user
+      FTP_USER_PASS: 123
+      FTP_USER_HOME: /home/username
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "2"
+        compress: "true"

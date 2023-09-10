@@ -1,0 +1,53 @@
+#-----------------------------------------------------------
+# Backup config | Clickhouse Backup Agent | rlevchenko.com
+# PROVIDED WITHOUT WARRANTY OF ANY KIND
+#-----------------------------------------------------------
+
+general:
+  remote_storage: ftp
+  max_file_size: 107374182400
+  disable_progress_bar: true
+  backups_to_keep_local: 6
+  backups_to_keep_remote: 336
+  log_level: info
+  allow_empty_backups: false
+  download_concurrency: 1
+  upload_concurrency: 1
+clickhouse:
+  username: rlbackup
+  password: "Pass123"
+  host: clickhouse
+  port: 9000
+  disk_mapping: {}
+  skip_tables:
+  - system.*
+  timeout: 5m
+  freeze_by_part: false
+  secure: false
+  skip_verify: false
+  sync_replicated_tables: false
+  log_sql_queries: false
+  config_dir: /etc/clickhouse-server/
+  restart_command: systemctl restart clickhouse-server
+  debug: false
+api:
+  listen: 0.0.0.0:7171
+  enable_metrics: true
+  enable_pprof: false
+  username: "rlAPIuser"
+  password: "Pass123"
+  secure: false
+  certificate_file: ""
+  private_key_file: ""
+  create_integration_tables: false
+ftp:
+  address: "ftp:21"
+  timeout: 2m
+  username: "user"
+  password: "123"
+  tls: false
+  path: ""
+  compression_format: tar
+  compression_level: 1
+  concurrency: 1
+  debug: false
