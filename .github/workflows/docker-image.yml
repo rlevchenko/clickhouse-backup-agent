@@ -16,4 +16,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build docker agent image
-      run: docker build . --file /agent/Dockerfile 
+      run: docker build ./agent --file ./agent/Dockerfile 
