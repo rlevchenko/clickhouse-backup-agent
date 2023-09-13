@@ -40,10 +40,10 @@ Default settings:
 
 - _docker-compose.yml_ - describes environment to test the agent locally
    There are the following services:
-  - clickhouse server (clickhouse-server:23.8-alpine)
-  - clickhouse-backup (altinity/clickhouse-backup:2.4.0)
-  - our clickhouse-backup-agent (ch-backup-agent)
-  - ftpd_server (stilliard/pure-ftpd)
+  - clickhouse server ([clickhouse-server:23.8-alpine](https://hub.docker.com/r/clickhouse/clickhouse-server))
+  - clickhouse-backup ([altinity/clickhouse-backup:2.4.0](https://github.com/Altinity/clickhouse-backup))
+  - our clickhouse-backup-agent ([ch-backup-agent](https://github.com/rlevchenko/clickhouse-backup-agent/blob/main/agent/Dockerfile))
+  - ftpd_server ([stilliard/pure-ftpd](https://github.com/stilliard/docker-pure-ftpd))
 - _./clickhouse/clickhouse-backup-config.yml_ - clickhouse-backup config file
 - _./agent/Dockerfile_ - backup agent's docker image
 - _./agent/ch-backup-logrotate.conf_ - logrotate config file
