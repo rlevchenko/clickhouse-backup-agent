@@ -6,6 +6,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'agent/Dockerfile'
+      - 'diagram/diagram-backup.py'
 
 jobs:
 
