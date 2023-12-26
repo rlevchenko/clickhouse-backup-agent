@@ -1,4 +1,4 @@
-name: Build docker agent image
+name: Build docker agent image and diagram
 
 on:
   workflow_dispatch:
