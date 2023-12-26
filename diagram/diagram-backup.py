@@ -10,8 +10,7 @@ from diagrams import Diagram, Edge, Cluster, Node
 graph_attributes = {
     "fontsize": "9",
     "orientation": "portrait",
-    "splines":"spline",
-    "splines": "true"
+    "splines":"spline"
 }
 
 node_attributes = {          
@@ -88,6 +87,7 @@ with Diagram(show=False, outformat="png", graph_attr=graph_attributes, direction
     check_upload_status - Edge(label="\n NO \n", tailport="e", headport="w", **edge_attributes ) - \
     upload_error - write_upload_error - Edge(tailport="s", headport="n") - end
     #---------------#
+
 #-----------------------------------------------------------
 # Support the project: https://diagrams.mingrammer.com/
 #-----------------------------------------------------------
