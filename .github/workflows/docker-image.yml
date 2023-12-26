@@ -32,16 +32,16 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    - name: Install diagrams
-      run: pip install diagrams
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install diagrams ruff
     - name: Lint the code
       run: |
-        pip install ruff
         ruff --output-format=github ./diagram
     - name: Run Python
       run: | 
         python ./diagram/diagram-backup.py
-        ls -la ./diagram
     - name: Publish diagram
       uses: actions/upload-artifact@v3
       with:
