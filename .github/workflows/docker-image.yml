@@ -34,6 +34,10 @@ jobs:
         python-version: '3.11'
     - name: Install diagrams
       run: pip install diagrams
+    - name: Lint the code
+      run: |
+        pip install ruff
+        ruff --output-format=github ./diagram
     - name: Run Python
       run: python ./diagram/diagram-backup.py
     
