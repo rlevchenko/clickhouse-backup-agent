@@ -39,7 +39,9 @@ jobs:
         pip install ruff
         ruff --output-format=github ./diagram
     - name: Run Python
-      run: python ./diagram/diagram-backup.py
+      run: | 
+        python ./diagram/diagram-backup.py
+        ls -la ./diagram
     - name: Publish diagram
       uses: actions/upload-artifact@v3
       with:
