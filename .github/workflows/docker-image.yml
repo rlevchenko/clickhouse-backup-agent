@@ -47,6 +47,6 @@ jobs:
       with:
         name: upload diagram
         path: |
-          diagram/diagrams_image.png
+          diagrams_image.png
     
     
