@@ -73,6 +73,10 @@ More info and tricks at the [blog post](https://rlevchenko.com/2023/09/12/simple
 
 ## Result
 
+Diagram as code:
+
+![Diagram as Code](https://rlevchenko.files.wordpress.com/2023/12/image-1.png)
+
 Output with error, warning and info messages:
 
 ![Agent Output](https://rlevchenko.files.wordpress.com/2023/09/first-run-w-error.jpg)
@@ -80,7 +84,3 @@ Output with error, warning and info messages:
 Log file:
 
 ![Log file](https://rlevchenko.files.wordpress.com/2023/09/log-file.jpg)
-
-Diagram as code: 
-
-![Diagram as Code](https://rlevchenko.files.wordpress.com/2023/12/image-1.png)
