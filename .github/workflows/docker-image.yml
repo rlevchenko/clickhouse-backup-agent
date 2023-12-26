@@ -40,5 +40,11 @@ jobs:
         ruff --output-format=github ./diagram
     - name: Run Python
       run: python ./diagram/diagram-backup.py
+    - name: Publish diagram
+      uses: actions/upload-artifact@v3
+      with:
+        name: upload diagram
+        path: |
+          diagram/diagrams_image.png
     
     
