@@ -81,4 +81,6 @@ Log file:
 
 ![Log file](https://rlevchenko.files.wordpress.com/2023/09/log-file.jpg)
 
+Diagram as code: 
+
 ![Diagram as Code](https://rlevchenko.files.wordpress.com/2023/12/image-1.png)
