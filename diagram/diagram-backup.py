@@ -28,11 +28,11 @@ edge_attributes = {
 
 with Diagram(show=False, outformat="png", graph_attr=graph_attributes, direction="TB"):
     # nodes and icons
-    start_end_icon = "./custom images/start-end.png"
-    decision_icon = "./custom images/decision.png"
-    action_icon = "./custom images/action.png"
-    out_icon = "./custom images/input-output.png"
-    catch_icon = "./custom images/catch.png"
+    start_end_icon = "./custom-images/start-end.png"
+    decision_icon = "./custom-images/decision.png"
+    action_icon = "./custom-images/action.png"
+    out_icon = "./custom-images/input-output.png"
+    catch_icon = "./custom-images/catch.png"
     start = Node (label="Start", image=start_end_icon, labelloc="c", height="0.4", weight="0.45", **node_attributes)
     end = Node (label="End", image=start_end_icon, labelloc="c", height="0.4", weight="0.45", **node_attributes)
 
