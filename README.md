@@ -9,7 +9,7 @@
 Dockerized cron job to backup ClickHouse databases on single host or cluster with shards and replicas. Based on Alpine docker image, [clickhouse-backup tool](https://github.com/Altinity/clickhouse-backup) along with it's ability to work as a REST API service. Logrotate has been added to manage the log files produced by the backup agent. If any issues/suggestions, use the issues tab or create a new PR.
 FYI: If you're seeking to PostgreSQL backup agent, it can be accessed [here](https://github.com/rlevchenko/psql-backup-agent).
 
-Diagram as Code in Python and described in this [blog post](https://rlevchenko.com/2023/12/26/create-diagram-as-code-in-python/)
+Diagram as Code in Python and described in this [blog post](https://rlevchenko.com/2023/12/26/create-diagram-as-code-in-python/).
 
 The agent does the following:
 
